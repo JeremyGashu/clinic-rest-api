@@ -22,7 +22,7 @@ app.use(express.urlencoded({extended : false}))
 
 //ROUTES
 app.use('/api/admin', adminRoute)
-app.use('/api/users', clinicRoute)
+app.use('/api/clinics', clinicRoute)
 app.use('/api/auth', authRoute)
 
 
