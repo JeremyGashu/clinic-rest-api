@@ -4,7 +4,7 @@
   "description": "Clinic management app buid with react",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "author": "Ermias Gashu",
   "license": "ISC",
