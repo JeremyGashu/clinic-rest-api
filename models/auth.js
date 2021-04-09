@@ -18,6 +18,10 @@ const authSchema = new mongoose.Schema({
     type : {
         type : String,
         required : true
+    },
+    clinicId : {
+        type : mongoose.Schema.Types.ObjectId,
+        default : null
     }
 })
 

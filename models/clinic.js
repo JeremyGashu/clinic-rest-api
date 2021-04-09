@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const userSchema = new mongoose.Schema({
+const clinicSchema = new mongoose.Schema({
     name : {
         type : String,
         required : true
@@ -22,26 +22,37 @@ const userSchema = new mongoose.Schema({
         type : Number,
         required : true,
     },
-    payments : {
-        type : [{}],
-        default : [],
-    },
-    doctors : {
-        type : [{}],
-        default : [],
-    },
-    departments : {
-        type : [{}],
-        default : [],
-    },
-    appointments : {
-        type : [{}],
-        default : [],
-    },
-    patients : {
-        type : [{}],
-        default : [],
+    createddAt : {
+        type : mongoose.Schema.Types.Date,
+        default : Date.now(),
     },
 })
 
-module.exports = mongoose.model('Clinic', userSchema)
+clinicSchema.virtual("appointments", {
+    ref: "Appointment",
+    localField: "_id",
+    foreignField: "clinicId",
+  })
+
+  clinicSchema.virtual("doctors", {
+    ref: "Doctor",
+    localField: "_id",
+    foreignField: "clinicId",
+  })
+
+  clinicSchema.virtual("patients", {
+    ref: "Patient",
+    localField: "_id",
+    foreignField: "clinicId",
+  })
+
+  clinicSchema.virtual("payments", {
+    ref: "Payment",
+    localField: "_id",
+    foreignField: "clinicId",
+  })
+  
+  clinicSchema.set("toObject", { virtuals: true });
+  clinicSchema.set("toJSON", { virtuals: true });
+
+module.exports = mongoose.model('Clinic', clinicSchema)
