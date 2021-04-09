@@ -25,6 +25,10 @@ const patientSchema = new mongoose.Schema({
         type  : mongoose.Schema.Types.Date,
         default : new Date().setDate(new Date().getDate() - Math.floor(Math.random() * 12)),
     },
+    date : {
+        type : Date,
+        default : Date.now(),
+    },
     status : {
         type : Boolean,
         default : false,

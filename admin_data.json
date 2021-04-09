@@ -1,0 +1,22 @@
+{
+    "hotels": [
+        {
+            "createddAt": "2021-04-09T10:34:29.254Z",
+            "_id": "60702e2412e0f80cb676f23a",
+            "name": "AAU clinic",
+            "TTN": "111111111",
+            "userRegisteredName": "Some Name",
+            "adminId": "60702e2412e0f80cb676f23b",
+            "amount": 30000,
+            "id": "60702e2412e0f80cb676f23a",
+            "numberOfPatients": 50,
+            "paymentToday": 2000,
+            "totalPayment" : 200000
+        }
+    ],
+    "todaysClinicsIncome": 12000,
+    "overallClinicsIncome": 12000000,
+    "servicePaymentToday": 20000,
+    "servicePaymentTotal": 2000000,
+    "numberOfClients": 30
+}

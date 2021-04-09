@@ -22,7 +22,7 @@ const clinicSchema = new mongoose.Schema({
         type : Number,
         required : true,
     },
-    createddAt : {
+    createdAt : {
         type : mongoose.Schema.Types.Date,
         default : Date.now(),
     },
