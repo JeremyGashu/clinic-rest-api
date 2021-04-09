@@ -14,7 +14,11 @@ router.post('/add-doctor', AuthMiddleware.clinic_logged_in, clinicController.add
 
 router.post('/add-patient', AuthMiddleware.clinic_logged_in, clinicController.add_patient)
 
+router.patch('/', AuthMiddleware.clinic_logged_in, clinicController.update_clinic)
+
 router.post('/signup',  clinicController.create_clinic)
+
+
 
 //PARSE THE CLINIC INFO FROM THE HOTEL INFO
 
