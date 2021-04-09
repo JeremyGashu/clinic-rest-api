@@ -1,5 +1,4 @@
 const express = require('express')
-const morgan = require('morgan')
 const mongoose = require('mongoose')
 
 const KEYS = require('./config/keys')
@@ -16,7 +15,6 @@ const authRoute = require('./routes/auth')
 const app = express()
 
 //MIDDLEWARES
-app.use(morgan('dev'))
 app.use(express.json())
 app.use(express.urlencoded({extended : false}))
 
