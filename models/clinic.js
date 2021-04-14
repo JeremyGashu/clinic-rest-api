@@ -26,6 +26,10 @@ const clinicSchema = new mongoose.Schema({
         type : mongoose.Schema.Types.Date,
         default : Date.now(),
     },
+    phoneNo : {
+      type : String,
+      required : true,
+    }
 })
 
 clinicSchema.virtual("appointments", {

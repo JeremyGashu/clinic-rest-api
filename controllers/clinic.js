@@ -19,8 +19,8 @@ const Payment = require('../models/payment');
 // @ Faillure Status code = 400
 // @Request = POST
 exports.create_clinic = (req, res) => {
-	const { name, TTN, userRegisteredName, amount, username, password, confirmPassword } = req.body;
-	if (name && TTN && userRegisteredName && amount && password && confirmPassword) {
+	const { name, TTN, userRegisteredName, amount, username, password, confirmPassword, phoneNo} = req.body;
+	if (name && TTN && userRegisteredName && amount && phoneNo && password && confirmPassword) {
 		//check if the phone number is taken
 		Auth.find({ username })
 			.exec()
@@ -29,10 +29,10 @@ exports.create_clinic = (req, res) => {
 					// console.log(admin)
 					res.status(400).json({ error: true, message: 'Email already registered' });
 				} else {
-					if (password.length < 8 || password !== confirmPassword) {
+					if (password !== confirmPassword) {
 						res.status(400).json({
 							error: true,
-							message: 'Password should be at least 8 characters and match the confirmation password!',
+							message: 'Password should match the confirmation password!',
 						});
 					} else {
 						bcrypt.hash(password, 10, (err, hashed) => {
@@ -58,6 +58,7 @@ exports.create_clinic = (req, res) => {
 											userRegisteredName,
 											adminId: newClinicAdmin._id,
 											amount,
+											phoneNo
 										});
 
 										newClinic
@@ -341,7 +342,7 @@ exports.add_patient = (req, res) => {
 
 	if (authToken) {
 		let { name, id, age, address, phoneNo, status } = req.body;
-		if (name && id && age && address && phoneNo && status) {
+		if (name && id && age && address && phoneNo && status!==null) {
 			jwt.verify(authToken, KEYS.JSON_WEB_TOKEN_SECRET, (err, decode) => {
 				if (err) {
 					res.status(401).json({ error: true, message: 'Unauthorized Personnel!' });

@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
 
 const KEYS = require('./config/keys')
 
@@ -17,6 +18,8 @@ const app = express()
 //MIDDLEWARES
 app.use(express.json())
 app.use(express.urlencoded({extended : false}))
+
+app.use(cors())
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
